@@ -1,6 +1,40 @@
 --osi.lua
+--Remember to copy contents to osiFuncs in c.lua BEFORE COMPILING!
 
-local MODULE_REQUIREMENTS = {"LAYER","TITLE","VERSION","AUTHOR","DEPENDENCIES"}
+local MODULE_REQUIREMENTS = {
+	"TITLE",
+	"VERSION",
+	"AUTHOR",
+	"LAYER",
+	"TYPE",
+	"DEPENDENCIES"
+	"WHITELIST"
+	"BLACKLIST"
+}
+
+local tMODEL = {
+	TITLE = 'title'
+	VERSION = '1.0'
+	AUTHOR = 'Author'
+	LAYER = 1-7
+	TYPE = 'independent' or 'dependent'
+	DEPENDENCIES = {
+		L1 = '*' --ANY
+		L2 = 'rednet'
+		L3 = {WHITELIST = {
+			'ip',
+			'icmp'
+			}
+		}
+		L4 = 'tcp'
+		L5 = {BLACKLIST = {
+			'NetBIOS'
+			}
+		}
+		L6 = '*'
+		L7 = '*'
+	}
+}
 
 function import(...)
 	modules = {...}
